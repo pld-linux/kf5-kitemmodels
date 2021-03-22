@@ -1,15 +1,15 @@
-%define		kdeframever	5.79
+%define		kdeframever	5.80
 %define		qtver		5.9.0
 %define		kfname		kitemmodels
 
 Summary:	Set of item models extending the Qt model-view framework
 Name:		kf5-%{kfname}
-Version:	5.79.0
+Version:	5.80.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	0731f3adb4f88b9dd4acab7c454c8133
+# Source0-md5:	fa97b0d05c119e7fc3d1350a8e1eebd2
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= %{qtver}
@@ -79,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.md
-%attr(755,root,root) %ghost %{_libdir}/libKF5ItemModels.so.5
+%ghost %{_libdir}/libKF5ItemModels.so.5
 %attr(755,root,root) %{_libdir}/libKF5ItemModels.so.*.*
 %dir %{qt5dir}/qml/org/kde/kitemmodels
 %attr(755,root,root) %{qt5dir}/qml/org/kde/kitemmodels/libitemmodelsplugin.so
@@ -92,5 +92,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/KItemModels
 %{_includedir}/KF5/kitemmodels_version.h
 %{_libdir}/cmake/KF5ItemModels
-%attr(755,root,root) %{_libdir}/libKF5ItemModels.so
+%{_libdir}/libKF5ItemModels.so
 %{qt5dir}/mkspecs/modules/qt_KItemModels.pri
