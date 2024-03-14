@@ -1,34 +1,34 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.249.0
+%define		kdeframever	5.114
 %define		qtver		5.15.2
 %define		kfname		kitemmodels
 
 Summary:	Set of item models extending the Qt model-view framework
 Name:		kf5-%{kfname}
-Version:	5.249.0
-Release:	0.1
+Version:	5.114.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	98e40773de2f12b493c5904ae5da95b5
+Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
+# Source0-md5:	d378637728c944e741b91a5c41d0d0f8
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Gui-devel >= %{qtver}
-BuildRequires:	Qt6Test-devel >= %{qtver}
-BuildRequires:	Qt6Widgets-devel >= %{qtver}
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel >= %{qtver}
+BuildRequires:	Qt5Test-devel >= %{qtver}
+BuildRequires:	Qt5Widgets-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	ninja
-BuildRequires:	qt6-linguist >= %{qtver}
+BuildRequires:	qt5-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	kf5-dirs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		qt6dir		%{_libdir}/qt6
+%define		qt5dir		%{_libdir}/qt5
 
 %description
 KItemModels provides the following models:
@@ -87,18 +87,17 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.md
-%ghost %{_libdir}/libKF6ItemModels.so.6
-%attr(755,root,root) %{_libdir}/libKF6ItemModels.so.*.*
-%dir %{qt6dir}/qml/org/kde/kitemmodels
-%attr(755,root,root) %{qt6dir}/qml/org/kde/kitemmodels/libitemmodelsplugin.so
-%{qt6dir}/qml/org/kde/kitemmodels/qmldir
-%{_datadir}/qlogging-categories6/kitemmodels.categories
-%{_datadir}/qlogging-categories6/kitemmodels.renamecategories
-%{_libdir}/qt6/qml/org/kde/kitemmodels/itemmodelsplugin.qmltypes
-%{_libdir}/qt6/qml/org/kde/kitemmodels/kde-qmlmodule.version
+%ghost %{_libdir}/libKF5ItemModels.so.5
+%attr(755,root,root) %{_libdir}/libKF5ItemModels.so.*.*
+%dir %{qt5dir}/qml/org/kde/kitemmodels
+%attr(755,root,root) %{qt5dir}/qml/org/kde/kitemmodels/libitemmodelsplugin.so
+%{qt5dir}/qml/org/kde/kitemmodels/qmldir
+%{_datadir}/qlogging-categories5/kitemmodels.categories
+%{_datadir}/qlogging-categories5/kitemmodels.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF6/KItemModels
-%{_libdir}/cmake/KF6ItemModels
-%{_libdir}/libKF6ItemModels.so
+%{_includedir}/KF5/KItemModels
+%{_libdir}/cmake/KF5ItemModels
+%{_libdir}/libKF5ItemModels.so
+%{qt5dir}/mkspecs/modules/qt_KItemModels.pri
